@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\stenl\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\stenl\\.nuget\\packages",
+      "F:\\Shared\\NuGetPackages"
+    ]
+  }
+}

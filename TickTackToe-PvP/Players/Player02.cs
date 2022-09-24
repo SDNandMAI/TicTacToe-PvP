@@ -4,7 +4,17 @@ using System.Text;
 
 namespace TickTackToe_PvP.Players
 {
-    class Player02
+    public class Player02 : IPlayer
     {
+        public string Name { get; private set; }
+
+        public bool Turn { get; set; }
+
+        public bool Winner { get; set; } = false;
+
+        public Player02()
+        {
+            this.Name = "Player02";
+        }
     }
 }

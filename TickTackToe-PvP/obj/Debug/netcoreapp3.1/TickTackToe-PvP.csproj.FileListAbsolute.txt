@@ -1,0 +1,14 @@
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.exe
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.deps.json
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.runtimeconfig.json
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.runtimeconfig.dev.json
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.dll
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\bin\Debug\netcoreapp3.1\TickTackToe-PvP.pdb
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.csproj.AssemblyReference.cache
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.AssemblyInfoInputs.cache
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.AssemblyInfo.cs
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.csproj.CoreCompileInputs.cache
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.dll
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.pdb
+C:\Users\stenl\Source\Repos\SimpleProject\TickTackToe-PvP\obj\Debug\netcoreapp3.1\TickTackToe-PvP.genruntimeconfig.cache
