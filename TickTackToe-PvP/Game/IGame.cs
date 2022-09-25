@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TickTackToe_PvP.Board;
 
 namespace TickTackToe_PvP.Game
 {
     public interface IGame
     {
-        public bool IsWinner(string [,] board);
+        public string IsWinner(string [,] board);
 
-        int Player01Wins { get; }
-        int Player02Wins { get; }
+        public IBoard GameBoard { get; }
+        public void ResetGame();
+
+
     }
 }
