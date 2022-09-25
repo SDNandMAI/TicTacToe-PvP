@@ -9,20 +9,46 @@ namespace TickTackToe_PvP.Board
         private const int rows = 3, cols = 3;
         public string[,] BoardMatrix { get; private set; }
 
+        public string[,] OriginalBoardMatrix { get; private set; }
+
         public TheBoard()
         {
-            this.BoardMatrix = new string[rows, cols] 
+            this.OriginalBoardMatrix = new string[rows, cols] 
             { 
                 { "1", "2", "3" },
                 { "4", "5", "6" },
                 { "7", "8", "9" } 
             };
+
+            this.BoardMatrix = OriginalBoardMatrix;
         }
 
-        public string DrawBoard(int row, int col, bool player01Turn, bool player02Turn)
+        public string DrawBoard()
+        {
+            StringBuilder board = new StringBuilder();
+
+            board.AppendLine(@"___ ___ ___");
+            board.AppendLine($" {BoardMatrix[0, 0]} | {BoardMatrix[0, 1]} | {BoardMatrix[0, 2]}");
+            board.AppendLine(@"___ ___ ___");
+            board.AppendLine($" {BoardMatrix[1, 0]} | {BoardMatrix[1, 1]} | {BoardMatrix[1, 2]}");
+            board.AppendLine(@"___ ___ ___");
+            board.AppendLine($" {BoardMatrix[2, 0]} | {BoardMatrix[2, 1]} | {BoardMatrix[2, 2]}");
+            // board.AppendLine(@"___ ___ ___");
+
+
+            return board.ToString();
+        }
+
+        public string InitialBoard()
+        {
+            this.ResetMatrix();
+            return this.DrawBoard();
+        }
+
+        public void UpdateMatrix(int row, int col, bool player01Turn, bool player02Turn)
         {
             string x = "X";
-            string y = "Y";
+            string o = "O";
 
             if (player01Turn && !player02Turn)
             {
@@ -31,26 +57,13 @@ namespace TickTackToe_PvP.Board
 
             if (!player01Turn && player02Turn)
             {
-                this.BoardMatrix[row, col] = y;
+                this.BoardMatrix[row, col] = o;
             }
-
-            return this.InitialBoard();
         }
 
-        public string InitialBoard()
+        public void ResetMatrix()
         {
-            StringBuilder board = new StringBuilder();
-            
-            board.AppendLine(@"___ ___ ___");
-            board.AppendLine($" {BoardMatrix[0,0]} | {BoardMatrix[0, 1]} | {BoardMatrix[0, 2]}");
-            board.AppendLine(@"___ ___ ___");
-            board.AppendLine($" {BoardMatrix[1, 0]} | {BoardMatrix[1, 1]} | {BoardMatrix[1, 2]}");
-            board.AppendLine(@"___ ___ ___");
-            board.AppendLine($" {BoardMatrix[2, 0]} | {BoardMatrix[2, 1]} | {BoardMatrix[2, 2]}");
-           // board.AppendLine(@"___ ___ ___");
-
-
-            return board.ToString();
+            this.BoardMatrix = OriginalBoardMatrix;
         }
     }
 }

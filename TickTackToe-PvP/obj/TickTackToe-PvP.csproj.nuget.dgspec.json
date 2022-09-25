@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stenl\\Source\\Repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj": {}
+    "C:\\Users\\stenl\\source\\repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stenl\\Source\\Repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj": {
+    "C:\\Users\\stenl\\source\\repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stenl\\Source\\Repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj",
+        "projectUniqueName": "C:\\Users\\stenl\\source\\repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj",
         "projectName": "TickTackToe-PvP",
-        "projectPath": "C:\\Users\\stenl\\Source\\Repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj",
+        "projectPath": "C:\\Users\\stenl\\source\\repos\\SimpleProject\\TickTackToe-PvP\\TickTackToe-PvP.csproj",
         "packagesPath": "C:\\Users\\stenl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stenl\\Source\\Repos\\SimpleProject\\TickTackToe-PvP\\obj\\",
+        "outputPath": "C:\\Users\\stenl\\source\\repos\\SimpleProject\\TickTackToe-PvP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "F:\\Shared\\NuGetPackages"
