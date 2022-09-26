@@ -14,7 +14,7 @@ namespace TickTackToe_PvP.Game
         public void ResetGame()
         {
             GameBoard.ResetMatrix();
-            GameBoard.DrawBoard();
+           
         }
 
         public TheGame(IBoard gameBoard)
@@ -41,9 +41,9 @@ namespace TickTackToe_PvP.Game
                 //check vertical lines
                 string[]column = new string[] { board[0, r], board[1, r], board[2, r] };
                 //Player01 winner
-                if (column.All(x => x == xSymbol || x == xSymbol)) return xSymbol;
+                if (column.All(x => x == xSymbol )) return xSymbol;
                 //Player02 winner
-                if (column.All(o => o == xSymbol || o == oSymbol)) return oSymbol;
+                if (column.All(o => o == xSymbol )) return oSymbol;
 
             }
 

@@ -7,7 +7,9 @@ namespace TickTackToe_PvP.Players
     public interface IPlayer
     {
         public string Name { get; }
-        public bool Turn { get; }
-        public bool Winner { get; }
+        public bool Turn { get; set; }
+        public bool Winner { get; set; }
+
+        public int WinCount { get; set; }
     }
 }
