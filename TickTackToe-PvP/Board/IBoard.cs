@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TickTackToe_PvP.Players;
 
 namespace TickTackToe_PvP.Board
 {
@@ -8,11 +9,12 @@ namespace TickTackToe_PvP.Board
     {
         public string DrawBoard();
 
-        public void UpdateMatrix(string playerMove, bool player01Turn, bool player02Turn);
+        public void UpdateMatrix(string playerMove, IPlayer player);
 
         public string InitialBoard();
         public void ResetMatrix();
+
         public string [,] BoardMatrix { get; }
-        
+
     }
 }

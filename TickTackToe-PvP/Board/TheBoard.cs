@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using TickTackToe_PvP.Players;
 
 namespace TickTackToe_PvP.Board
 {
@@ -18,12 +20,7 @@ namespace TickTackToe_PvP.Board
 
         public TheBoard()
         {
-            this.BoardMatrix = new string[rows, cols]
-            {
-                { "1", "2", "3" },
-                { "4", "5", "6" },
-                { "7", "8", "9" }
-            };
+            this.BoardMatrix = OriginalBoardMatrix.Clone() as string[,]; 
         }
 
         public string DrawBoard()
@@ -48,7 +45,7 @@ namespace TickTackToe_PvP.Board
             return this.DrawBoard();
         }
 
-        public void UpdateMatrix(string playerMove, bool player01Turn, bool player02Turn)
+        public void UpdateMatrix(string playerMove, IPlayer player)
         {
             int row = 0;
             int col = 0;
@@ -68,29 +65,17 @@ namespace TickTackToe_PvP.Board
                 }
                 if (found) break;
             }
-
-            string x = "X";
-            string o = "O";
-
-            if (player01Turn && !player02Turn)
+            if (player.Turn)
             {
-                this.BoardMatrix[row, col] = x;
+                this.BoardMatrix[row, col] = player.Marker;
             }
 
-            if (!player01Turn && player02Turn)
-            {
-                this.BoardMatrix[row, col] = o;
-            }
+           
         }
 
         public void ResetMatrix()
         {
-            this.BoardMatrix = new string[rows, cols]
-            {
-                { "1", "2", "3" },
-                { "4", "5", "6" },
-                { "7", "8", "9" }
-            };
+            this.BoardMatrix = OriginalBoardMatrix.Clone() as string[,]; 
         }
     }
 }

@@ -14,9 +14,12 @@ namespace TickTackToe_PvP.Players
 
         public int WinCount {get; set; } = 0;
 
+        public string Marker { get; private set; }
+
         public Player01()
         {
             this.Name = "Player01";
+            this.Marker = "X";
         }
     }
 }

@@ -10,11 +10,23 @@ namespace TickTackToe_PvP
        public void NewIndex(IPlayer player01, IPlayer player02)
         {
             Console.Clear();
-            Console.WriteLine("Press [ENTER] to start TicTacToe game.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            string initialMessage = "Press [ENTER] to start TicTacToe game.";
+            CenterText(initialMessage);
+            Console.WriteLine(initialMessage);
             Console.WriteLine(Environment.NewLine);
-            Console.WriteLine($"{player01.Name} wins {player01.WinCount} vs {player02.Name} wins {player02.WinCount}");
+            string playerStats = $"{player01.Name} wins {player01.WinCount} vs {player02.Name} wins {player02.WinCount}";
+            CenterText(playerStats);
+            Console.WriteLine(playerStats);
             Console.ReadLine();
+            Console.ResetColor();
 
+        }
+
+        private static void CenterText(string text)
+        {
+            Console.SetCursorPosition((Console.WindowWidth - text.Length) / 2, Console.CursorTop);
+            
         }
     }
 }
