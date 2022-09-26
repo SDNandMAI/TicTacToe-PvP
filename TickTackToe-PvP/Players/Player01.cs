@@ -12,6 +12,8 @@ namespace TickTackToe_PvP.Players
 
         public bool Winner { get; set; }
 
+        public int WinCount {get; set; } = 0;
+
         public Player01()
         {
             this.Name = "Player01";

@@ -9,18 +9,21 @@ namespace TickTackToe_PvP.Board
         private const int rows = 3, cols = 3;
         public string[,] BoardMatrix { get; private set; }
 
-        public string[,] OriginalBoardMatrix { get; private set; }
+        private readonly string[,] OriginalBoardMatrix = new string[rows, cols]
+            {
+                { "1", "2", "3" },
+                { "4", "5", "6" },
+                { "7", "8", "9" }
+            };
 
         public TheBoard()
         {
-            this.OriginalBoardMatrix = new string[rows, cols] 
-            { 
+            this.BoardMatrix = new string[rows, cols]
+            {
                 { "1", "2", "3" },
                 { "4", "5", "6" },
-                { "7", "8", "9" } 
+                { "7", "8", "9" }
             };
-
-            this.BoardMatrix = OriginalBoardMatrix;
         }
 
         public string DrawBoard()
@@ -45,8 +48,27 @@ namespace TickTackToe_PvP.Board
             return this.DrawBoard();
         }
 
-        public void UpdateMatrix(int row, int col, bool player01Turn, bool player02Turn)
+        public void UpdateMatrix(string playerMove, bool player01Turn, bool player02Turn)
         {
+            int row = 0;
+            int col = 0;
+            bool found = false;
+            for (int r = 0; r < OriginalBoardMatrix.GetLength(0); r++)
+            {
+                for (int c = 0; c < OriginalBoardMatrix.GetLength(1); c++)
+                {
+                    if (OriginalBoardMatrix[r,c] == playerMove.ToString())
+                    {
+                        row = r;
+                        col = c;
+                        found = true;
+                        break;
+                        
+                    }
+                }
+                if (found) break;
+            }
+
             string x = "X";
             string o = "O";
 
@@ -63,7 +85,12 @@ namespace TickTackToe_PvP.Board
 
         public void ResetMatrix()
         {
-            this.BoardMatrix = OriginalBoardMatrix;
+            this.BoardMatrix = new string[rows, cols]
+            {
+                { "1", "2", "3" },
+                { "4", "5", "6" },
+                { "7", "8", "9" }
+            };
         }
     }
 }
