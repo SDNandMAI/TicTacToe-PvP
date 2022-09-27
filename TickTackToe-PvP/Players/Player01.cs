@@ -8,9 +8,9 @@ namespace TickTackToe_PvP.Players
     {
         public string Name { get; private set; }
 
-        public bool Turn { get; set; }
+        public bool Turn { get; set; } = true;
 
-        public bool Winner { get; set; }
+        public bool Winner { get; set; } = false;
 
         public int WinCount {get; set; } = 0;
 

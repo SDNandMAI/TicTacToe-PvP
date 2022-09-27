@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using TickTackToe_PvP.Board;
 
 namespace TickTackToe_PvP.Game
@@ -43,7 +39,7 @@ namespace TickTackToe_PvP.Game
                 //Player01 winner
                 if (column.All(x => x == xSymbol )) return xSymbol;
                 //Player02 winner
-                if (column.All(o => o == xSymbol )) return oSymbol;
+                if (column.All(o => o == oSymbol )) return oSymbol;
 
             }
 

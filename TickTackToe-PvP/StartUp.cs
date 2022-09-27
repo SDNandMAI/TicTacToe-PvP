@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using TickTackToe_PvP.Board;
 using TickTackToe_PvP.Game;
 using TickTackToe_PvP.Players;
@@ -10,63 +10,113 @@ namespace TickTackToe_PvP
     {
         public static IGame game;
         public static IBoard board;
-        static void Main(string[] args)
+        public static IPlayer player01;
+        public static IPlayer player02;
+        public static StartScreen startScreen;
+        public const int delayTime = 3000;
+        static async Task Main(string[] args)
         {
             board = new TheBoard();
             game = new TheGame(board);
-            IPlayer player01 = new Player01();
-            IPlayer player02 = new Player02();
-            StartScreen startScreen = new StartScreen();
-
-
+            player01 = new Player01();
+            player02 = new Player02();
+            startScreen = new StartScreen();
 
             while (true)
             {
                 startScreen.NewIndex(player01, player02);
 
                 board.ResetMatrix();
-
+                player01.Turn = true;
+                if ((player01.WinCount + player02.WinCount) % 2 != 0)
+                {
+                    player01.Turn = false; 
+                    player02.Turn = true;
+                }
+                
                 while (true)
                 {
-                    PlayerMakesMove(board, player01);
-                   
-                    if (GetWinner(player01)) break;
+                    if (player01.Turn)
+                    {
+                        DrawNewBoard(board);
+                        Console.Write($"{player01.Name}: ");
+                        try
+                        {
+                            PlayerMakesMove(board, player01);
+                        }
+                        catch (ArgumentException ae)
+                        {
+                            Console.WriteLine(ae.Message);
+                            await Task.Delay(delayTime);
+                            continue;
+                        }
+                       
 
-                    PlayerMakesMove(board, player02);
-                
-                    if (GetWinner(player02))  break;
-                    
+                        if (await GetWinner(player01)) break;
+
+                        player02.Turn = true;
+                    }
+
+                    if (player02.Turn)
+                    {
+                        DrawNewBoard(board);
+                        Console.Write($"{player02.Name}: ");
+                        try
+                        {
+                            PlayerMakesMove(board, player02);
+                        }
+                        catch (ArgumentException ae)
+                        {
+
+                            Console.WriteLine(ae.Message);
+                            await Task.Delay(delayTime);
+                            continue;
+                        }
+                        
+
+                        if (await GetWinner(player02)) break;
+
+                        player01.Turn = true;
+                        
+                    }
                 }
-
             }
         }
 
-        private static bool GetWinner(IPlayer player)
+        private static async Task<bool> GetWinner(IPlayer player)
         {
             string checkWinner = game.IsWinner(board.BoardMatrix);
             if (checkWinner == player.Marker)
             {
                 player.WinCount++;
                 player.Winner = true;
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(board.DrawBoard());
-                Console.WriteLine($"{player.Name} WINS!!\nPress [ENTER] to continue..");
-                Console.ResetColor();
-                Console.ReadLine();
+                await PrintWinner(player);
                 return true;
             }
             return false;
         }
+
+        private static async Task PrintWinner(IPlayer player)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            DrawNewBoard(board);
+            Console.WriteLine($"{player.Name} WINS!!, returning to start screen...");
+            Console.ResetColor();
+            await Task.Delay(delayTime);
+        }
+
         private static void PlayerMakesMove(IBoard board, IPlayer player)
         {
-            Console.Clear();
-            Console.WriteLine(board.DrawBoard());
-            Console.Write($"{player.Name}: ");
             string playerCommand = Console.ReadLine();
             player.Turn = true;
             board.UpdateMatrix(playerCommand, player);
             player.Turn = false;
+        }
+
+        private static void DrawNewBoard(IBoard board)
+        {
+            Console.Clear();
+            Console.WriteLine(board.DrawBoard());
         }
     }
 }

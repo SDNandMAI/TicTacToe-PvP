@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TickTackToe_PvP.Board;
+﻿using TickTackToe_PvP.Board;
 
 namespace TickTackToe_PvP.Game
 {

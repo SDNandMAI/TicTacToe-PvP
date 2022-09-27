@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TickTackToe_PvP.Players
+﻿namespace TickTackToe_PvP.Players
 {
     public interface IPlayer
     {
