@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 using TickTackToe_PvP.Players;
 
 namespace TickTackToe_PvP.Board
@@ -9,6 +7,10 @@ namespace TickTackToe_PvP.Board
     public class TheBoard : IBoard
     {
         private const int rows = 3, cols = 3;
+        private const int boardMinValue = 1;
+        private const int boardMaxValue = 9;
+        private IPlayer player01 = new Player01();
+        private IPlayer player02 = new Player02();
         public string[,] BoardMatrix { get; private set; }
 
         private readonly string[,] OriginalBoardMatrix = new string[rows, cols]
@@ -47,6 +49,13 @@ namespace TickTackToe_PvP.Board
 
         public void UpdateMatrix(string playerMove, IPlayer player)
         {
+            int result = 0;
+            bool parsed = int.TryParse(playerMove, out result);
+            if (!parsed || result < boardMinValue || result > boardMaxValue)
+            {
+                throw new ArgumentException(ExceptinMessages.InvalidPlayerMove);
+            }
+
             int row = 0;
             int col = 0;
             bool found = false;
@@ -54,8 +63,13 @@ namespace TickTackToe_PvP.Board
             {
                 for (int c = 0; c < OriginalBoardMatrix.GetLength(1); c++)
                 {
-                    if (OriginalBoardMatrix[r,c] == playerMove.ToString())
+                    if (OriginalBoardMatrix[r,c] == playerMove)
                     {
+                        if (BoardMatrix[r,c] == player01.Marker || BoardMatrix[r,c] == player02.Marker)
+                        {
+                            throw new ArgumentException(ExceptinMessages.OccupiedIndex);
+                        }
+
                         row = r;
                         col = c;
                         found = true;
