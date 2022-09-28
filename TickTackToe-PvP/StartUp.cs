@@ -26,7 +26,7 @@ namespace TickTackToe_PvP
             {
                 startScreen.NewIndex(player01, player02);
 
-                board.ResetMatrix();
+                game.ResetGame();
                 player01.Turn = true;
                 if ((player01.WinCount + player02.WinCount) % 2 != 0)
                 {
@@ -52,7 +52,8 @@ namespace TickTackToe_PvP
                         }
                        
 
-                        if (await GetWinner(player01)) break;
+                        if (await CheckForResult(player01)) break;
+                        
 
                         player02.Turn = true;
                     }
@@ -74,7 +75,7 @@ namespace TickTackToe_PvP
                         }
                         
 
-                        if (await GetWinner(player02)) break;
+                        if (await CheckForResult(player02)) break;
 
                         player01.Turn = true;
                         
@@ -83,7 +84,7 @@ namespace TickTackToe_PvP
             }
         }
 
-        private static async Task<bool> GetWinner(IPlayer player)
+        private static async Task<bool> CheckForResult(IPlayer player)
         {
             string checkWinner = game.IsWinner(board.BoardMatrix);
             if (checkWinner == player.Marker)
@@ -93,7 +94,22 @@ namespace TickTackToe_PvP
                 await PrintWinner(player);
                 return true;
             }
+
+            if (game.IsTie(checkWinner))
+            {
+                await PrintTie();
+                return true;
+            }
             return false;
+        }
+
+        private static async Task PrintTie()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            DrawNewBoard(board);
+            Console.WriteLine("You finished in a tie!, returnit to start screen...");
+            Console.ResetColor();
+            await Task.Delay(delayTime);
         }
 
         private static async Task PrintWinner(IPlayer player)
@@ -118,5 +134,7 @@ namespace TickTackToe_PvP
             Console.Clear();
             Console.WriteLine(board.DrawBoard());
         }
+
+       
     }
 }
