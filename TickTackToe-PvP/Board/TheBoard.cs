@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
 using TickTackToe_PvP.Players;
 
 namespace TickTackToe_PvP.Board
 {
     public class TheBoard : IBoard
     {
-        private const int rows = 3, cols = 3;
-        private const int boardMinValue = 1;
-        private const int boardMaxValue = 9;
-        private IPlayer player01 = new Player01();
-        private IPlayer player02 = new Player02();
+        private const int rows = 3, cols = 3, boardMinValue = 1, boardMaxValue = 9;
+        private IPlayer player01 = new Player01(), player02 = new Player02();
+       
         public string[,] BoardMatrix { get; private set; }
 
         private readonly string[,] OriginalBoardMatrix = new string[rows, cols]
@@ -56,8 +55,8 @@ namespace TickTackToe_PvP.Board
                 throw new ArgumentException(ExceptinMessages.InvalidPlayerMove);
             }
 
-            int row = 0;
-            int col = 0;
+            int row = 0, col = 0;
+            
             bool found = false;
             for (int r = 0; r < OriginalBoardMatrix.GetLength(0); r++)
             {
@@ -91,5 +90,7 @@ namespace TickTackToe_PvP.Board
         {
             this.BoardMatrix = OriginalBoardMatrix.Clone() as string[,]; 
         }
+
+       
     }
 }

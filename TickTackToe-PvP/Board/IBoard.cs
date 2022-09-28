@@ -10,7 +10,6 @@ namespace TickTackToe_PvP.Board
 
         public string InitialBoard();
         public void ResetMatrix();
-
         public string [,] BoardMatrix { get; }
 
     }

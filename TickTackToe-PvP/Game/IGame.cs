@@ -9,6 +9,8 @@ namespace TickTackToe_PvP.Game
         public IBoard GameBoard { get; }
         public void ResetGame();
 
+        public bool IsTie(string result);
+
 
     }
 }
